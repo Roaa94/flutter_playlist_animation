@@ -1,7 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_playlist_animation/pages/playlist_page.dart';
+import 'package:flutter_playlist_animation/utils/hero_animation_manager.dart';
 import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
 
 class LibraryPage extends StatelessWidget {
@@ -13,20 +12,22 @@ class LibraryPage extends StatelessWidget {
       body: Center(
         child: GestureDetector(
           onTap: () {
-            Navigator.of(context).push(PageRouteBuilder(
-              transitionDuration: const Duration(milliseconds: 300),
-              pageBuilder:
-                  (BuildContext context, Animation<double> animation, _) {
-                return const PlaylistPage();
-              },
-              transitionsBuilder: (BuildContext context,
-                  Animation<double> animation, _, Widget child) {
-                return FadeTransition(
-                  opacity: animation,
-                  child: child,
-                );
-              },
-            ));
+            Navigator.of(context).push(
+              PageRouteBuilder(
+                transitionDuration: const Duration(milliseconds: 500),
+                pageBuilder:
+                    (BuildContext context, Animation<double> animation, _) {
+                  return const PlaylistPage();
+                },
+                transitionsBuilder: (BuildContext context,
+                    Animation<double> animation, _, Widget child) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  );
+                },
+              ),
+            );
           },
           child: Hero(
             tag: 'image-hero',
@@ -37,19 +38,24 @@ class LibraryPage extends StatelessWidget {
               BuildContext fromHeroContext,
               BuildContext toHeroContext,
             ) {
-              const begin = 0.1;
-              const end = 2.0;
-              final tween = Tween(begin: begin, end: end);
-              final rotationAnimation = animation.drive(tween);
+              final tween = Tween(
+                begin: HeroAnimationManager.startRotation,
+                end: HeroAnimationManager.endRotation,
+              );
+              final curvedAnimation = CurvedAnimation(
+                parent: animation,
+                curve: Curves.easeOut,
+              );
+              final rotationAnimation = tween.animate(curvedAnimation);
 
               return AnimatedBuilder(
                 animation: rotationAnimation,
                 child: const ImageWrapper(),
                 builder: (context, child) {
                   return Transform(
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, 0.002)
-                      ..rotateX(rotationAnimation.value * pi),
+                    transform: HeroAnimationManager.getTransformMatrix(
+                      rotationAnimation.value,
+                    ),
                     alignment: Alignment.center,
                     child: child,
                   );
@@ -57,9 +63,7 @@ class LibraryPage extends StatelessWidget {
               );
             },
             child: Transform(
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.002)
-                ..rotateX(0.1 * pi),
+              transform: HeroAnimationManager.startTransformMatrix,
               alignment: Alignment.center,
               child: const ImageWrapper(),
             ),

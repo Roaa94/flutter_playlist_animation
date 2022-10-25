@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_playlist_animation/utils/hero_animation_manager.dart';
 import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
 
 class PlaylistPage extends StatelessWidget {
@@ -17,9 +16,7 @@ class PlaylistPage extends StatelessWidget {
           child: Hero(
             tag: 'image-hero',
             child: Transform(
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.002)
-                ..rotateX(2 * -pi),
+              transform: HeroAnimationManager.endTransformMatrix,
               alignment: Alignment.center,
               child: const ImageWrapper(),
             ),
