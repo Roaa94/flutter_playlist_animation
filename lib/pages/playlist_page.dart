@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playlist_animation/utils/hero_animation_manager.dart';
+import 'package:flutter_playlist_animation/utils/library_data.dart';
 import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
 import 'package:flutter_playlist_animation/widgets/song_action_buttons.dart';
+import 'package:flutter_playlist_animation/widgets/song_list_item.dart';
 
 class PlaylistPage extends StatefulWidget {
   const PlaylistPage({
@@ -60,6 +62,7 @@ class _PlaylistPageState extends State<PlaylistPage> {
                   expandedHeight: 240,
                   automaticallyImplyLeading: false,
                   floating: true,
+                  pinned: true,
                   flexibleSpace: Container(
                     margin: const EdgeInsets.only(bottom: 20),
                     child: Center(
@@ -78,33 +81,43 @@ class _PlaylistPageState extends State<PlaylistPage> {
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  sliver: SliverList(
-                    delegate: SliverChildListDelegate([
-                      SlideTransition(
-                        position: contentOffsetAnimation,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Center(
-                              child: Text(
-                                'Acoustic',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                  sliver: SliverToBoxAdapter(
+                    child: SlideTransition(
+                      position: contentOffsetAnimation,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Center(
+                            child: Text(
+                              'Acoustic',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
-                            SizedBox(height: 20),
-                            SongActionButtons(),
-                            SizedBox(height: 20),
-                            Text(
-                              'Upcoming songs',
-                              style: TextStyle(fontSize: 18),
+                          ),
+                          const SizedBox(height: 20),
+                          const SongActionButtons(),
+                          const SizedBox(height: 20),
+                          const Text(
+                            'Upcoming songs',
+                            style: TextStyle(fontSize: 22),
+                          ),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            padding: EdgeInsets.only(
+                              top: 10,
+                              bottom: MediaQuery.of(context).padding.bottom + 20,
                             ),
-                          ],
-                        ),
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: LibraryData.playlistImages.length,
+                            itemBuilder: (context, index) => SongListItem(
+                              image: LibraryData.playlistImages[index],
+                            ),
+                          ),
+                        ],
                       ),
-                    ]),
+                    ),
                   ),
                 ),
               ],
