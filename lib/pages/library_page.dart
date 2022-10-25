@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playlist_animation/pages/playlist_page.dart';
 import 'package:flutter_playlist_animation/utils/hero_animation_manager.dart';
+import 'package:flutter_playlist_animation/utils/page_transitions.dart';
 import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
 
 class LibraryPage extends StatelessWidget {
@@ -9,21 +10,31 @@ class LibraryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('My Playlists'),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.filter_list),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
+        ],
+      ),
       body: Center(
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).push(
-              PageRouteBuilder(
-                transitionDuration: const Duration(milliseconds: 500),
-                pageBuilder:
-                    (BuildContext context, Animation<double> animation, _) {
-                  return const PlaylistPage();
-                },
-                transitionsBuilder: (BuildContext context,
-                    Animation<double> animation, _, Widget child) {
-                  return FadeTransition(
-                    opacity: animation,
-                    child: child,
+              createFadeInRoute(
+                routePageBuilder: (
+                  BuildContext context,
+                  Animation<double> animation,
+                  _,
+                ) {
+                  return PlaylistPage(
+                    routeAnimation: animation,
                   );
                 },
               ),
