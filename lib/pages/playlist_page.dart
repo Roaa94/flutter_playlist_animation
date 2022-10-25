@@ -53,7 +53,9 @@ class _PlaylistPageState extends State<PlaylistPage> {
                       child: Transform(
                         transform: HeroAnimationManager.endTransformMatrix,
                         alignment: Alignment.center,
-                        child: const ImageWrapper(),
+                        child: const ImageWrapper(
+                          image: 'assets/images/image-4.jpeg',
+                        ),
                       ),
                     ),
                   ),

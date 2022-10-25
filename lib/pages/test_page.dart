@@ -25,7 +25,9 @@ class _TestPageState extends State<TestPage> {
                 ..setEntry(3, 2, 0.002)
                 ..rotateX(_rotationValue * -pi),
               alignment: Alignment.center,
-              child: const ImageWrapper(),
+              child: const ImageWrapper(
+                image: 'assets/images/image-4.jpeg',
+              ),
             ),
           ),
           Slider(

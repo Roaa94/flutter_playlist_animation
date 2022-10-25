@@ -61,7 +61,9 @@ class LibraryPage extends StatelessWidget {
 
               return AnimatedBuilder(
                 animation: rotationAnimation,
-                child: const ImageWrapper(),
+                child: const ImageWrapper(
+                  image: 'assets/images/image-4.jpeg',
+                ),
                 builder: (context, child) {
                   return Transform(
                     transform: HeroAnimationManager.getTransformMatrix(
@@ -76,7 +78,9 @@ class LibraryPage extends StatelessWidget {
             child: Transform(
               transform: HeroAnimationManager.startTransformMatrix,
               alignment: Alignment.center,
-              child: const ImageWrapper(),
+              child: const ImageWrapper(
+                image: 'assets/images/image-4.jpeg',
+              ),
             ),
           ),
         ),

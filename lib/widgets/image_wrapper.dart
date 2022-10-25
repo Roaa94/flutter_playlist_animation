@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ImageWrapper extends StatelessWidget {
-  const ImageWrapper({super.key});
+  const ImageWrapper({
+    super.key,
+    required this.image,
+  });
+
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +16,7 @@ class ImageWrapper extends StatelessWidget {
         width: 250,
         height: 250,
         child: Image.asset(
-          'assets/images/singer-1.jpeg',
+          image,
           fit: BoxFit.cover,
         ),
       ),
