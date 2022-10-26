@@ -8,6 +8,10 @@ class HeroAnimationManager {
   static const double endRotation = 2;
   static const double perspectiveValue = 0.002;
 
+  static const Duration routeTransitionDuration = Duration(milliseconds: 600);
+  static Duration pageElementsAnimationDuration = Duration(
+      milliseconds: (routeTransitionDuration.inMilliseconds / 2).ceil());
+
   static Matrix4 getTransformMatrix(double rotation) {
     return Matrix4.identity()
       ..setEntry(3, 2, perspectiveValue)
@@ -19,11 +23,8 @@ class HeroAnimationManager {
   static Matrix4 endTransformMatrix = getTransformMatrix(-endRotation);
 
   static Widget flightShuttleBuilder(
-    BuildContext flightContext,
     Animation<double> animation,
-    HeroFlightDirection flightDirection,
-    BuildContext fromHeroContext,
-    BuildContext toHeroContext,
+    String image,
   ) {
     final tween = Tween(
       begin: HeroAnimationManager.startRotation,
@@ -37,9 +38,7 @@ class HeroAnimationManager {
 
     return AnimatedBuilder(
       animation: rotationAnimation,
-      child: const ImageWrapper(
-        image: 'assets/images/image-4.jpeg',
-      ),
+      child: ImageWrapper(image: image),
       builder: (context, child) {
         return Transform(
           transform: getTransformMatrix(

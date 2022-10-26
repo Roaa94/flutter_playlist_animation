@@ -9,15 +9,21 @@ class LibraryItem extends StatelessWidget {
     super.key,
     required this.image,
     required this.id,
+    this.onPush,
+    this.onPop,
   });
 
   final String image;
   final int id;
+  final VoidCallback? onPush;
+  final VoidCallback? onPop;
 
   @override
   Widget build(BuildContext context) {
+    String heroTag = 'image-$id-hero';
     return GestureDetector(
       onTap: () {
+        onPush?.call();
         Navigator.of(context).push(
           createFadeInRoute(
             routePageBuilder: (
@@ -28,14 +34,18 @@ class LibraryItem extends StatelessWidget {
               return PlaylistPage(
                 routeAnimation: animation,
                 image: image,
+                heroTag: heroTag,
               );
             },
           ),
-        );
+        ).then((_) {
+          onPop?.call();
+        });
       },
       child: Hero(
-        tag: 'image-$id-hero',
-        flightShuttleBuilder: HeroAnimationManager.flightShuttleBuilder,
+        tag: heroTag,
+        flightShuttleBuilder: (_, Animation<double> animation, __, ___, ____) =>
+            HeroAnimationManager.flightShuttleBuilder(animation, image),
         child: Transform(
           transform: HeroAnimationManager.startTransformMatrix,
           alignment: Alignment.center,

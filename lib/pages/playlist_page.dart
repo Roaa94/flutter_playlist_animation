@@ -10,10 +10,12 @@ class PlaylistPage extends StatefulWidget {
     super.key,
     required this.routeAnimation,
     required this.image,
+    required this.heroTag,
   });
 
   final Animation<double> routeAnimation;
   final String image;
+  final String heroTag;
 
   @override
   State<PlaylistPage> createState() => _PlaylistPageState();
@@ -69,7 +71,7 @@ class _PlaylistPageState extends State<PlaylistPage> {
                     margin: const EdgeInsets.only(bottom: 20),
                     child: Center(
                       child: Hero(
-                        tag: 'image-hero',
+                        tag: widget.heroTag,
                         child: Transform(
                           transform: HeroAnimationManager.endTransformMatrix,
                           alignment: Alignment.center,
