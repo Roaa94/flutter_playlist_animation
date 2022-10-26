@@ -52,8 +52,7 @@ class _LibraryPageState extends State<LibraryPage>
           Expanded(
             flex: 3,
             child: FeaturedLibraryItems(
-              onItemPush: () => animationController.forward(),
-              onItemPop: () => animationController.reverse(),
+                animationController: animationController,
             ),
           ),
           Expanded(
