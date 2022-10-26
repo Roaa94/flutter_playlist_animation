@@ -30,7 +30,7 @@ class _LibraryPageState extends State<LibraryPage>
       ),
       body: Column(
         children: [
-          Expanded(
+          const Expanded(
             flex: 3,
             child: FeaturedLibraryItems(),
           ),
