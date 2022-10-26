@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playlist_animation/utils/hero_animation_manager.dart';
+import 'package:flutter_playlist_animation/utils/animation_manager.dart';
 import 'package:flutter_playlist_animation/utils/library_data.dart';
 import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
 import 'package:flutter_playlist_animation/widgets/song_action_buttons.dart';
@@ -73,7 +73,7 @@ class _PlaylistPageState extends State<PlaylistPage> {
                       child: Hero(
                         tag: widget.heroTag,
                         child: Transform(
-                          transform: HeroAnimationManager.endTransformMatrix,
+                          transform: AnimationManager.endTransformMatrix,
                           alignment: Alignment.center,
                           child: ImageWrapper(image: widget.image),
                         ),

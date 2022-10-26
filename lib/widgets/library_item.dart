@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playlist_animation/utils/hero_animation_manager.dart';
+import 'package:flutter_playlist_animation/utils/animation_manager.dart';
 import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
 
 class LibraryItem extends StatelessWidget {
@@ -25,16 +25,16 @@ class LibraryItem extends StatelessWidget {
       onLongPress: onLongPress,
       onTap: onTap,
       child: TweenAnimationBuilder<double>(
-        duration: HeroAnimationManager.expandFeaturedLibraryItemsDuration,
+        duration: AnimationManager.expandFeaturedLibraryItemsDuration,
         tween: Tween<double>(begin: 0, end: rotation),
         child: ImageWrapper(image: image),
         builder: (context, double value, child) => Hero(
           tag: heroTag,
           flightShuttleBuilder:
               (_, Animation<double> animation, __, ___, ____) =>
-                  HeroAnimationManager.flightShuttleBuilder(animation, image),
+                  AnimationManager.flightShuttleBuilder(animation, image),
           child: Transform(
-            transform: HeroAnimationManager.getTransformMatrix(value),
+            transform: AnimationManager.getTransformMatrix(value),
             alignment: Alignment.center,
             child: child,
           ),

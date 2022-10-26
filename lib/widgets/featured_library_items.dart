@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playlist_animation/pages/playlist_page.dart';
-import 'package:flutter_playlist_animation/utils/hero_animation_manager.dart';
+import 'package:flutter_playlist_animation/utils/animation_manager.dart';
 import 'package:flutter_playlist_animation/utils/library_data.dart';
 import 'package:flutter_playlist_animation/utils/page_transitions.dart';
 import 'package:flutter_playlist_animation/widgets/library_item.dart';
@@ -40,7 +40,7 @@ class _FeaturedLibraryItemsState extends State<FeaturedLibraryItems> {
         4,
         (index) {
           return AnimatedPositioned(
-            duration: HeroAnimationManager.expandFeaturedLibraryItemsDuration,
+            duration: AnimationManager.expandFeaturedLibraryItemsDuration,
             curve: Curves.easeInOut,
             top: 100 + (15.0 * index) + (_expanded ? 40 * (index - 1) : 0),
             left: 0,
@@ -63,7 +63,7 @@ class _FeaturedLibraryItemsState extends State<FeaturedLibraryItems> {
                 child: Center(
                   child: LibraryItem(
                     rotation:
-                        _expanded ? HeroAnimationManager.startRotation : 0,
+                        _expanded ? AnimationManager.startRotation : 0,
                     id: index,
                     image: LibraryData.playlistImages[index],
                     onTap: () {

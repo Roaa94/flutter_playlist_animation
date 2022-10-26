@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class HeroAnimationManager {
+class AnimationManager {
   static const double startRotation = 0.1;
   static const double endRotation = 2;
   static const double perspectiveValue = 0.003;

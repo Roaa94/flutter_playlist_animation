@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playlist_animation/utils/hero_animation_manager.dart';
+import 'package:flutter_playlist_animation/utils/animation_manager.dart';
 import 'package:flutter_playlist_animation/utils/library_data.dart';
 import 'package:flutter_playlist_animation/widgets/featured_library_items.dart';
 import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
@@ -20,7 +20,7 @@ class _LibraryPageState extends State<LibraryPage>
   void initState() {
     animationController = AnimationController(
       vsync: this,
-      duration: HeroAnimationManager.pageElementsAnimationDuration,
+      duration: AnimationManager.pageElementsAnimationDuration,
     );
     offsetAnimation = Tween(
       begin: const Offset(0, 0),

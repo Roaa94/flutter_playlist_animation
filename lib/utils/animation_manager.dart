@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
 
-class HeroAnimationManager {
+class AnimationManager {
   static const double startRotation = 0.1;
   static const double endRotation = 2;
   static const double perspectiveValue = 0.003;
@@ -29,8 +29,8 @@ class HeroAnimationManager {
     String image,
   ) {
     final tween = Tween(
-      begin: HeroAnimationManager.startRotation,
-      end: HeroAnimationManager.endRotation,
+      begin: AnimationManager.startRotation,
+      end: AnimationManager.endRotation,
     );
     final curvedAnimation = CurvedAnimation(
       parent: animation,
