@@ -12,14 +12,25 @@ class ImageWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: SizedBox(
-        width: size,
-        height: size,
-        child: Image.asset(
-          image,
-          fit: BoxFit.cover,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 10,
+            color: Colors.black.withOpacity(0.2),
+          )
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: Image.asset(
+            image,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

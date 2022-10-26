@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playlist_animation/utils/hero_animation_manager.dart';
 import 'package:flutter_playlist_animation/utils/library_data.dart';
+import 'package:flutter_playlist_animation/widgets/featured_library_items.dart';
 import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
-import 'package:flutter_playlist_animation/widgets/library_item.dart';
 
 class LibraryPage extends StatefulWidget {
   const LibraryPage({super.key});
@@ -51,13 +51,9 @@ class _LibraryPageState extends State<LibraryPage>
         children: [
           Expanded(
             flex: 3,
-            child: Center(
-              child: LibraryItem(
-                id: 0,
-                image: 'assets/images/image-4.jpeg',
-                onPush: () => animationController.forward(),
-                onPop: () => animationController.reverse(),
-              ),
+            child: FeaturedLibraryItems(
+              onItemPush: () => animationController.forward(),
+              onItemPop: () => animationController.reverse(),
             ),
           ),
           Expanded(

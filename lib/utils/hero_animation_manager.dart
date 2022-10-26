@@ -6,8 +6,10 @@ import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
 class HeroAnimationManager {
   static const double startRotation = 0.1;
   static const double endRotation = 2;
-  static const double perspectiveValue = 0.002;
+  static const double perspectiveValue = 0.003;
 
+  static const Duration expandFeaturedLibraryItemsDuration =
+      Duration(milliseconds: 200);
   static const Duration routeTransitionDuration = Duration(milliseconds: 600);
   static Duration pageElementsAnimationDuration = Duration(
       milliseconds: (routeTransitionDuration.inMilliseconds / 2).ceil());

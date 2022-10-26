@@ -11,45 +11,59 @@ class LibraryItem extends StatelessWidget {
     required this.id,
     this.onPush,
     this.onPop,
+    this.onTap,
+    this.rotation = 0,
+    this.onLongPress,
   });
 
   final String image;
   final int id;
+  final VoidCallback? onTap;
   final VoidCallback? onPush;
   final VoidCallback? onPop;
+  final VoidCallback? onLongPress;
+  final double rotation;
 
   @override
   Widget build(BuildContext context) {
     String heroTag = 'image-$id-hero';
     return GestureDetector(
-      onTap: () {
-        onPush?.call();
-        Navigator.of(context).push(
-          createFadeInRoute(
-            routePageBuilder: (
-              BuildContext context,
-              Animation<double> animation,
-              _,
-            ) {
-              return PlaylistPage(
-                routeAnimation: animation,
-                image: image,
-                heroTag: heroTag,
-              );
-            },
+      onLongPress: onLongPress,
+      onTap: onTap ??
+          () {
+            onPush?.call();
+            Navigator.of(context).push(
+              createFadeInRoute(
+                routePageBuilder: (
+                  BuildContext context,
+                  Animation<double> animation,
+                  _,
+                ) {
+                  return PlaylistPage(
+                    routeAnimation: animation,
+                    image: image,
+                    heroTag: heroTag,
+                  );
+                },
+              ),
+            ).then((_) {
+              onPop?.call();
+            });
+          },
+      child: TweenAnimationBuilder<double>(
+        duration: HeroAnimationManager.expandFeaturedLibraryItemsDuration,
+        tween: Tween<double>(begin: 0, end: rotation),
+        child: ImageWrapper(image: image),
+        builder: (context, double value, child) => Hero(
+          tag: heroTag,
+          flightShuttleBuilder:
+              (_, Animation<double> animation, __, ___, ____) =>
+                  HeroAnimationManager.flightShuttleBuilder(animation, image),
+          child: Transform(
+            transform: HeroAnimationManager.getTransformMatrix(value),
+            alignment: Alignment.center,
+            child: child,
           ),
-        ).then((_) {
-          onPop?.call();
-        });
-      },
-      child: Hero(
-        tag: heroTag,
-        flightShuttleBuilder: (_, Animation<double> animation, __, ___, ____) =>
-            HeroAnimationManager.flightShuttleBuilder(animation, image),
-        child: Transform(
-          transform: HeroAnimationManager.startTransformMatrix,
-          alignment: Alignment.center,
-          child: ImageWrapper(image: image),
         ),
       ),
     );
