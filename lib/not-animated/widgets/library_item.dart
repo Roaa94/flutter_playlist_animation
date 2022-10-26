@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playlist_animation/workshop/widgets/image_wrapper.dart';
+import 'package:flutter_playlist_animation/not-animated/widgets/image_wrapper.dart';
 
 class LibraryItem extends StatelessWidget {
   const LibraryItem({

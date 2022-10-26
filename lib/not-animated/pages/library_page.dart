@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playlist_animation/workshop/utils/library_data.dart';
-import 'package:flutter_playlist_animation/workshop/widgets/featured_library_items.dart';
-import 'package:flutter_playlist_animation/workshop/widgets/image_wrapper.dart';
+import 'package:flutter_playlist_animation/not-animated/utils/library_data.dart';
+import 'package:flutter_playlist_animation/not-animated/widgets/featured_library_items.dart';
+import 'package:flutter_playlist_animation/not-animated/widgets/image_wrapper.dart';
 
 class LibraryPage extends StatefulWidget {
   const LibraryPage({super.key});

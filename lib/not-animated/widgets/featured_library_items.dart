@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playlist_animation/workshop/pages/playlist_page.dart';
-import 'package:flutter_playlist_animation/workshop/utils/library_data.dart';
-import 'package:flutter_playlist_animation/workshop/widgets/library_item.dart';
+import 'package:flutter_playlist_animation/not-animated/pages/playlist_page.dart';
+import 'package:flutter_playlist_animation/not-animated/utils/library_data.dart';
+import 'package:flutter_playlist_animation/not-animated/widgets/library_item.dart';
 
 class FeaturedLibraryItems extends StatefulWidget {
   const FeaturedLibraryItems({

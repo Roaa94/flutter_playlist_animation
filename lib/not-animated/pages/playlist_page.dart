@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playlist_animation/workshop/utils/library_data.dart';
-import 'package:flutter_playlist_animation/workshop/widgets/image_wrapper.dart';
-import 'package:flutter_playlist_animation/workshop/widgets/song_action_buttons.dart';
-import 'package:flutter_playlist_animation/workshop/widgets/song_list_item.dart';
+import 'package:flutter_playlist_animation/not-animated/utils/library_data.dart';
+import 'package:flutter_playlist_animation/not-animated/widgets/image_wrapper.dart';
+import 'package:flutter_playlist_animation/not-animated/widgets/song_action_buttons.dart';
+import 'package:flutter_playlist_animation/not-animated/widgets/song_list_item.dart';
 
 class PlaylistPage extends StatefulWidget {
   const PlaylistPage({
