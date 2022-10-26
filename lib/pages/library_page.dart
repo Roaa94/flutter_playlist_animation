@@ -32,6 +32,12 @@ class _LibraryPageState extends State<LibraryPage>
   }
 
   @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -52,7 +58,7 @@ class _LibraryPageState extends State<LibraryPage>
           Expanded(
             flex: 3,
             child: FeaturedLibraryItems(
-                animationController: animationController,
+              animationController: animationController,
             ),
           ),
           Expanded(
