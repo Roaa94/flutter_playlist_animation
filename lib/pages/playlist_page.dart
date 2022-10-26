@@ -9,9 +9,11 @@ class PlaylistPage extends StatefulWidget {
   const PlaylistPage({
     super.key,
     required this.routeAnimation,
+    required this.image,
   });
 
   final Animation<double> routeAnimation;
+  final String image;
 
   @override
   State<PlaylistPage> createState() => _PlaylistPageState();
@@ -71,9 +73,7 @@ class _PlaylistPageState extends State<PlaylistPage> {
                         child: Transform(
                           transform: HeroAnimationManager.endTransformMatrix,
                           alignment: Alignment.center,
-                          child: const ImageWrapper(
-                            image: 'assets/images/image-4.jpeg',
-                          ),
+                          child: ImageWrapper(image: widget.image),
                         ),
                       ),
                     ),
@@ -107,7 +107,8 @@ class _PlaylistPageState extends State<PlaylistPage> {
                             shrinkWrap: true,
                             padding: EdgeInsets.only(
                               top: 10,
-                              bottom: MediaQuery.of(context).padding.bottom + 20,
+                              bottom:
+                                  MediaQuery.of(context).padding.bottom + 20,
                             ),
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: LibraryData.playlistImages.length,

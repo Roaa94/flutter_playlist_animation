@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playlist_animation/pages/playlist_page.dart';
-import 'package:flutter_playlist_animation/utils/hero_animation_manager.dart';
-import 'package:flutter_playlist_animation/utils/page_transitions.dart';
-import 'package:flutter_playlist_animation/widgets/image_wrapper.dart';
+import 'package:flutter_playlist_animation/widgets/library_item.dart';
 
 class LibraryPage extends StatelessWidget {
   const LibraryPage({super.key});
@@ -23,32 +20,10 @@ class LibraryPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-              createFadeInRoute(
-                routePageBuilder: (
-                  BuildContext context,
-                  Animation<double> animation,
-                  _,
-                ) {
-                  return PlaylistPage(routeAnimation: animation);
-                },
-              ),
-            );
-          },
-          child: Hero(
-            tag: 'image-hero',
-            flightShuttleBuilder: HeroAnimationManager.flightShuttleBuilder,
-            child: Transform(
-              transform: HeroAnimationManager.startTransformMatrix,
-              alignment: Alignment.center,
-              child: const ImageWrapper(
-                image: 'assets/images/image-4.jpeg',
-              ),
-            ),
-          ),
+      body: const Center(
+        child: LibraryItem(
+          image: 'assets/images/image-4.jpeg',
+          id: 0,
         ),
       ),
     );
