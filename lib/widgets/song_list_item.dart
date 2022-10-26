@@ -56,6 +56,15 @@ class SongListItem extends StatelessWidget {
               ],
             ),
           ),
+          const Icon(
+            Icons.favorite,
+            color: Colors.pinkAccent,
+          ),
+          const SizedBox(width: 10),
+          Icon(
+            Icons.more_horiz,
+            color: Colors.black.withOpacity(0.5),
+          ),
         ],
       ),
     );
