@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playlist_animation/utils/animation_manager.dart';
 
 Route createFadeInRoute({required RoutePageBuilder routePageBuilder}) {
   return PageRouteBuilder(
-    transitionDuration: const Duration(milliseconds: 600),
-    reverseTransitionDuration: const Duration(milliseconds: 600),
+    transitionDuration: AnimationManager.routeTransitionDuration,
+    reverseTransitionDuration: AnimationManager.routeTransitionDuration,
     pageBuilder: routePageBuilder,
     transitionsBuilder: (
       BuildContext context,

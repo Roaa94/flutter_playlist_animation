@@ -20,7 +20,7 @@ class AnimationManager {
       ..rotateX(rotation * pi);
   }
 
-  static Matrix4 endTransformMatrix = getTransformMatrix(-endRotation);
+  static Matrix4 endTransformMatrix = getTransformMatrix(endRotation);
 
   static Widget flightShuttleBuilder(
     Animation<double> animation,
